@@ -67,7 +67,8 @@ export async function listFilters(gmail: any) {
             userId: 'me',
         });
 
-        const filters = response.data.filters || [];
+        // Gmail returns `filter` (singular). Keep `filters` fallback for safety.
+        const filters = response.data.filter || response.data.filters || [];
         
         return {
             filters,
